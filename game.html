@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game | Ilaha Osmanova</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" aria-label="Site brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <h2>Ilaha Osmanova</h2>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link" href="game.html" aria-current="page">Game</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container game-container">
+        <div class="section-head" style="text-align: center;">
+          <h1 class="section-title">Snake Challenge</h1>
+          <p class="section-lead">Use arrow keys to play. Eat the red fruit to grow!</p>
+          <div class="score-board">Score: <span id="currentScore">0</span></div>
+        </div>
+
+        <div style="position: relative;">
+          <canvas id="gameCanvas" width="400" height="400"></canvas>
+          <div id="gameOver" class="game-overlay" style="display: none;">
+            <h2>Game Over!</h2>
+            <button class="button button-primary" onclick="resetGame()">Try Again</button>
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <div></div>
+          <button class="button" onclick="changeDir('UP')">▲</button>
+          <div></div>
+          <button class="button" onclick="changeDir('LEFT')">◀</button>
+          <button class="button" onclick="changeDir('DOWN')">▼</button>
+          <button class="button" onclick="changeDir('RIGHT')">▶</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const scoreElement = document.getElementById("currentScore");
+    const overlay = document.getElementById("gameOver");
+    const box = 20;
+    const snakePalette = ["#AD9C8E", "#D9BBB0", "#E8D59E", "#8EAD9C", "#B0C4D9", "#C7B0D9"];
+    
+    let score = 0;
+    let game;
+    let snake, food, d;
+    let currentColorIndex = 0;
+
+    function resetGame() {
+      snake = [{ x: 9 * box, y: 10 * box }];
+      food = spawnFood();
+      d = null;
+      score = 0;
+      currentColorIndex = 0;
+      scoreElement.innerText = score;
+      overlay.style.display = "none";
+      if (game) clearInterval(game);
+      game = setInterval(draw, 100);
+    }
+
+    function spawnFood() {
+      return {
+        x: Math.floor(Math.random() * 19 + 1) * box,
+        y: Math.floor(Math.random() * 19 + 1) * box
+      };
+    }
+
+    document.addEventListener("keydown", direction);
+    function direction(event) {
+      if(event.keyCode == 37 && d != "RIGHT") d = "LEFT";
+      else if(event.keyCode == 38 && d != "DOWN") d = "UP";
+      else if(event.keyCode == 39 && d != "LEFT") d = "RIGHT";
+      else if(event.keyCode == 40 && d != "UP") d = "DOWN";
+    }
+
+    function changeDir(dir) {
+      if(dir == "LEFT" && d != "RIGHT") d = "LEFT";
+      if(dir == "UP" && d != "DOWN") d = "UP";
+      if(dir == "RIGHT" && d != "LEFT") d = "RIGHT";
+      if(dir == "DOWN" && d != "UP") d = "DOWN";
+    }
+
+    function collision(head, array) {
+      for(let i = 0; i < array.length; i++) {
+        if(head.x == array[i].x && head.y == array[i].y) return true;
+      }
+      return false;
+    }
+
+    function draw() {
+      // Realistic background with radial gradient for depth
+      const bgGrad = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, 250);
+      bgGrad.addColorStop(0, "#333333");
+      bgGrad.addColorStop(1, "#1a1a1a");
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw subtle grid lines
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+      ctx.lineWidth = 1;
+      for(let i = box; i < canvas.width; i += box) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
+      }
+
+      // Draw Glowing Food (Berry style)
+      const pulse = Math.sin(Date.now() / 200) * 2;
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = "#e4405f";
+      ctx.fillStyle = "#e4405f";
+      ctx.beginPath();
+      ctx.arc(food.x + box/2, food.y + box/2, (box/2 - 4) + pulse/2, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Food highlight
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+      ctx.beginPath();
+      ctx.arc(food.x + box/2 - 3, food.y + box/2 - 3, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw Snake with rounded segments and shadows
+      for(let i = 0; i < snake.length; i++) {
+        const isHead = (i == 0);
+        ctx.fillStyle = isHead ? snakePalette[currentColorIndex] : "#E8D59E";
+        ctx.shadowBlur = isHead ? 10 : 4;
+        ctx.shadowColor = "rgba(0,0,0,0.5)";
+        
+        ctx.beginPath();
+        ctx.roundRect(snake[i].x + 1, snake[i].y + 1, box - 2, box - 2, isHead ? 8 : 4);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Add expressive eyes to the head
+        if (isHead && d) {
+          ctx.fillStyle = "white";
+          let e1 = {x:0, y:0}, e2 = {x:0, y:0};
+          if (d === "UP")    { e1={x:6,y:6};  e2={x:14,y:6}; }
+          if (d === "DOWN")  { e1={x:6,y:14}; e2={x:14,y:14}; }
+          if (d === "LEFT")  { e1={x:6,y:6};  e2={x:6,y:14}; }
+          if (d === "RIGHT") { e1={x:14,y:6}; e2={x:14,y:14}; }
+          
+          [e1, e2].forEach(e => {
+            ctx.beginPath(); ctx.arc(snake[i].x + e.x, snake[i].y + e.y, 3, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = "black";
+            ctx.beginPath(); ctx.arc(snake[i].x + e.x, snake[i].y + e.y, 1.5, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = "white";
+          });
+        }
+      }
+
+      // Only run movement and collision logic if a direction is set
+      if (!d) return;
+
+      let snakeX = snake[0].x;
+      let snakeY = snake[0].y;
+
+      if( d == "LEFT") snakeX -= box;
+      if( d == "UP") snakeY -= box;
+      if( d == "RIGHT") snakeX += box;
+      if( d == "DOWN") snakeY += box;
+
+      if(snakeX == food.x && snakeY == food.y) {
+        score++;
+        scoreElement.innerText = score;
+        food = spawnFood();
+        // Cycle to next color in palette
+        currentColorIndex = (currentColorIndex + 1) % snakePalette.length;
+      } else {
+        snake.pop();
+      }
+
+      let newHead = { x: snakeX, y: snakeY };
+
+      if(snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
+        clearInterval(game);
+        overlay.style.display = "flex";
+      }
+
+      snake.unshift(newHead);
+    }
+
+    resetGame();
+  </script>
+</body>
+</html>
