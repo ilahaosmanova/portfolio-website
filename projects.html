@@ -7,52 +7,98 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>My Projects</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" aria-label="Site brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Ilaha Osmanova</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="projects.html" aria-current="page">Projects</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="projects.html">Projects</a>
-  </nav>
+  <main id="main">
+    <section class="section" aria-label="Projects page">
+      <div class="container">
+        <div class="section-head">
+          <h1 class="section-title">My Projects</h1>
+          <h3>
+          Below you can find a collection of projects that reflect my learning progress and practical experience in my field. We also have a <a href="https://www.youtube.com/@Teamnumber-8-site">YouTube channel</a> where we share detailed project demonstrations.
+          </h3>
+        </div>
 
-  <section>
-    <h2>Project 1 - Logic Gates</h2>
-    <h3> Description:</h3>
-    <p> This project was our first project for the SITE - 1101 course. First, we visited the university lab three times. At the beginning, my team and I built basic logic gates such as NOT, AND, and OR. After we completed and understood the concepts, we moved on to more complex circuits. We also combined our breadboards with other teams to build OR and XOR gates. It was an interesting and useful project for us. By participating in this project, we learned how logic gates actually work. From my point of view, projects that require lab visits are more interesting than others.</p>
-    <div class="project-images">
-      <img src="images/project1-breadboard.jpg" alt="Logic gates breadboard with components">
-      <img src="images/project1-team.jpg" alt="Team working on the project">
-    </div>
-  </section>
+        <div class="grid grid-1">
+          <article class="card project">
+            <div class="project-media">
+              <img class="project-image" src="images/project1-team.jpg" alt="Project 1 photo: Team working in the lab" loading="lazy">
+              <img class="project-image" src="images/project1-breadboard.jpg" alt="Project 1 photo: Breadboard logic gate circuit" loading="lazy">
+            </div>
+            <div class="project-body">
+              <h2 class="project-title"> <a href="https://youtu.be/GNseYjYp-1k?si=bI-JW7Zs7wARM26J">Logic Gates</a></h2>
+              <p class="project-text">
+                This project was our first project for the SITE - 1101 course. First, we visited the university lab three times. At the beginning, my team and I built basic logic gates such as NOT, AND, and OR. After we completed and understood the concepts, we moved on to more complex circuits. We also combined our breadboards with other teams to build NAND and XOR gates. It was an interesting and useful project for us. By participating in this project, we learned how logic gates actually work. From my point of view, projects that require lab visits are more interesting than others.
+              </p>
+              <div class="pill-row" aria-label="Project tags">
+                <span class="pill">Hardware lab</span>
+                <span class="pill">Collaboration</span>
+                <span class="pill">Circuits</span>
+              </div>
+            </div>
+          </article>
 
-  <section>
-    <h2>Project 2 - Teaching Community</h2>
-    <h3> Description:</h3>
-    <p> For Project 2, we visited the Physics, Mathematics, and Informatics Lyceum and taught basic coding to 7th-grade students. We used PowerPoint presentations provided by our instructor and the Microsoft MakeCode (Bug Arena) platform. We enjoyed recording the video and sharing our knowledge with the students. The students also asked us different questions about our experience at ADA University. I would say that the most interesting part of this project was the video editing process, as I really enjoyed working on it. However, I also think this was the most tiring project. Despite the students being interested in the topic, supervising and helping them one-by-one was sometimes challenging for us.</p>
-    <div class="project-images">
-      <img src="images/project2-students.jpg" alt="Students demonstration">
-      <img src="images/project2-team.jpg" alt="Team members at the teaching session">
-    </div>
-  </section>
+          <article class="card project">
+            <div class="project-media">
+              <img class="project-image" src="images/project2-team.jpg" alt="Project 2 photo: Team at the lyceum" loading="lazy">
+              <img class="project-image" src="images/project2-students.jpg" alt="Project 2 photo: Circuit used for demonstration" loading="lazy">
+            </div>
+            <div class="project-body">
+              <h2 class="project-title"> <a href=" https://youtu.be/z_Rd6PG3PsE?si=Z-IIVrwwSgc_9SbW"> Hour of Code</a></h2>
+              <p class="project-text">
+                For Project 2, we visited the Physics, Mathematics, and Informatics Lyceum and taught basic coding to 7th-grade students. We used PowerPoint presentations provided by our instructor and the Microsoft MakeCode (Bug Arena) platform. We enjoyed recording the video and sharing our knowledge with the students. The students also asked us different questions about our experience at ADA University. I would say that the most interesting part of this project was the video editing process, as I really enjoyed working on it. However, I also think this was the most tiring project. Despite the students being interested in the topic, supervising and helping them one-by-one was sometimes challenging for us
+              </p>
+              <div class="pill-row" aria-label="Project tags">
+                <span class="pill">Communication</span>
+                <span class="pill">MakeCode</span>
+                <span class="pill">Teaching</span>
+              </div>
+            </div>
+          </article>
 
-  <section>
-    <h2>Project 3 - Robotics</h2>
-    <h3> Description:</h3>
-    <p> In our third and final team project, we worked on a robotics project where we constructed a LEGO robot. After the construction, we wrote a program to make the robot draw different figures. In my opinion, the most interesting part of this project was the coding process. When our robot successfully drew an 8-pointed star, we were really proud of ourselves. It was not only the most complicated but also the most interesting project for me.</p>
-    <div class="project-images">
-      <img src="images/project3-team.jpg" alt="Team members with robot drawings">
-      <img src="images/project3-robot.jpg" alt="LEGO robot drawing figures">
-    </div>
-  </section>
+          <article class="card project">
+            <div class="project-media">
+              <img class="project-image" src="images/project3-robot.jpg" alt="Project 3 photo: LEGO MindStorms Robot" loading="lazy">
+              <img class="project-image" src="images/project3-team.jpg" alt="Project 3 photo: Team with the final drawing" loading="lazy">
+            </div>
+            <div class="project-body">
+              <h2 class="project-title"> <a href="https://youtu.be/Cu2MLDMMz6k?si=3fSCSKsQh8S-k3JM">Robotics</a></h2>
+              <p class="project-text">
+                In our third and final team project, we worked on a robotics project where we constructed a LEGO robot. After the construction, we wrote a program to make the robot draw different figures. In my opinion, the most interesting part of this project was the coding process. When our robot successfully drew an 8-pointed star, we were really proud of ourselves. It was not only the most complicated but also the most interesting project for me
+              </p>
+              <div class="pill-row" aria-label="Project tags">
+                <span class="pill">LEGO</span>
+                <span class="pill">MindStorms</span>
+                <span class="pill">Programming</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2026 Ilaha Osmanova</p>
-    <p>
-      <a href="https://github.com/ilahaosmanova">GitHub</a> |
-      <a href="https://www.codecademy.com/profiles/SITEstudent">Codecademy</a>
-    </p>
+    <div class="container footer-inner">
+      <p class="footer-text">
+        &copy; 2026 Ilaha Osmanova <span>|</span> HTML | CSS | JavaScript
+      </p>
+    </div>
   </footer>
 </body>
 </html>

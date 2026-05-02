@@ -3,32 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ilaha Osmanova | Portfolio</title>
+  <title>Ilaha Osmanova | Personal Website</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Hi, I'm Ilaha Osmanova</h1>
-    <p>Welcome to my personal portfolio website!</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" aria-label="Site brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Ilaha Osmanova</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html" aria-current="page">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="about.html">About</a> |
-    <a href="projects.html">Projects</a>
-  </nav>
+  <main id="main">
+    <section class="section hero" aria-label="Hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Future Computer Scientist · Building Projects · Exploring Technology</p>
+          <h1>Welcome to my personal website.</h1>
+          <p class="hero-subtitle">
+            I’m a Computer Science student at <a href="https://www.ada.edu.az/en">ADA University</a> with a strong interest in technology and innovation. I enjoy building projects, solving problems, and continuously improving my skills as a developer. Through my journey, I aim to create meaningful and practical solutions. Feel free to explore my projects to see what I’ve been working on.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="projects.html">View projects</a>
+            <a class="button button-secondary" href="about.html">About me</a>
+          </div>
+        </div>
 
-  <section>
-    <h2>About Me</h2>
-    <p>This is a brief introduction about me.</p>
-    <p>I am a Computer Science student at <a href="https://www.ada.edu.az/en">ADA University</a>, where I was admitted in 2025. I started my General Education studies in Spring 2026 and I am currently taking the SITE - 1101 course, which helps me build fundamental skills in my field. Throughout this course, I have worked on several group projects with my teammates, gaining practical experience and teamwork skills. You can learn more about my work on the "Projects" page.
-    </p>
-  </section>
+        <div class="hero-media" aria-label="Profile photo">
+          <img
+            src="images/profile.jpg"
+            alt="Portrait photo of Ilaha Osmanova"
+            class="avatar"
+            loading="eager"
+          >
+          <div class="social-links-grid" aria-label="Social links">
+            <a href="https://github.com/ilahaosmanova" target="_blank" rel="noopener noreferrer" class="social-link-card github">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+              </span>
+              <span class="social-label">GitHub</span>
+            </a>
+            <a href="https://www.codecademy.com/profiles/SITEstudent" target="_blank" rel="noopener noreferrer" class="social-link-card codecademy">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.82 20H8.35a.86.86 0 0 1-.86-.86V4.86c0-.48.38-.86.86-.86h4.47v2.09H9.58V17.9h3.24V20zm2.83 0h4.47a.86.86 0 0 0 .86-.86V4.86a.86.86 0 0 0-.86-.86h-4.47v2.09h3.24V17.9h-3.24V20z"/>
+                </svg>
+              </span>
+              <span class="social-label">Codecademy</span>
+            </a>
+            <a href="https://www.instagram.com/ilahaosmann" target="_blank" rel="noopener noreferrer" class="social-link-card instagram">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0-2.163c-3.259 0-3.667.014-4.947.072-1.28.058-2.147.26-2.911.557-.79.306-1.459.717-2.126 1.384-.667.667-1.078 1.335-1.384 2.126-.297.764-.499 1.63-.558 2.911-.058 1.28-.072 1.688-.072 4.948s.014 3.667.072 4.947c.059 1.281.261 2.148.558 2.911.306.79.717 1.459 1.384 2.126.667.667 1.335 1.079 2.126 1.384.764.297 1.631.499 2.911.558 1.28.058 1.688.072 4.948.072s3.667-.014 4.947-.072c1.281-.059 2.148-.261 2.911-.558.79-.306 1.459-.717 2.126-1.384.667-.667 1.079-1.335 1.384-2.126.297-.764.499-1.63.558-2.911.058-1.28.072-1.688.072-4.948s-.014-3.667-.072-4.947c-.059-1.281-.261-2.148-.558-2.911-.306-.79-.717-1.459-1.384-2.126-.667-.667-1.335-1.079-2.126-1.384-.764-.297-1.63-.499-2.911-.558-1.28-.058-1.688-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </span>
+              <span class="social-label">Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <p>&copy; 2026 Ilaha Osmanova</p>
-    <p>
-      <a href="https://github.com/ilahaosmanova">GitHub</a> |
-      <a href="https://www.codecademy.com/profiles/SITEstudent">Codecademy</a>
-    </p>
+    <div class="container footer-inner">
+      <p class="footer-text">
+        &copy; 2026 Ilaha Osmanova <span>|</span> HTML | CSS | JavaScript
+      </p>
+    </div>
   </footer>
 </body>
 </html>
